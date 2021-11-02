@@ -1,0 +1,64 @@
+############################################################
+#
+# web?????  ???8088
+#
+############################################################
+server:
+  port: 9090
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+
+############################################################
+#
+# ???????
+#
+############################################################
+spring:
+  profiles:
+    active: dev
+  datasource:                                           # ????????
+    type: com.zaxxer.hikari.HikariDataSource          # ??????HikariCP
+    driver-class-name: com.mysql.jdbc.Driver          # mysql??
+    url: jdbc:mysql://192.168.133.129:3306/foodie-shop-dev?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 30000       # ???????????????????????????????????SQLException? ??:30?
+      minimum-idle: 5                 # ?????
+      maximum-pool-size: 20           # ?????
+      auto-commit: true               # ????
+      idle-timeout: 600000            # ?????????????????????retired????:10??
+      pool-name: DateSourceHikariCP     # ?????
+      max-lifetime: 1800000           # ?????????????????????????retired????:30?? 1800000ms
+      connection-test-query: SELECT 1
+  servlet:
+    multipart:
+      max-file-size: 512000     # ?????????500kb
+      max-request-size: 512000  # ???????500kb
+
+############################################################
+#
+# mybatis ??
+#
+############################################################
+mybatis:
+  type-aliases-package: com.wondersgroup.springbootbabyrecord.pojo          # ??POJO??????
+  mapper-locations: classpath:mapper/*.xml      # mapper????
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+############################################################
+#
+# mybatis mapper ??
+#
+############################################################
+# ?? Mapper ??
+mapper:
+  mappers: com.wondersgroup.springbootbabyrecord.my.mapper.MyMapper
+  not-empty: false    # ?????????????????? username != null, ???? username != ''
+  identity: MYSQL
+# ??????
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
