@@ -1,5 +1,6 @@
 package com.wondersgroup.springbootbabyrecord.service;
 
+import com.wondersgroup.springbootbabyrecord.bo.UsersBO;
 import com.wondersgroup.springbootbabyrecord.pojo.Users;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
  */
 public interface UserService {
     List<Users> queryAllUser();
+    void AddUser(UsersBO usersBO);
 }

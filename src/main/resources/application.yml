@@ -19,7 +19,7 @@ spring:
     active: dev
   datasource:                                           # ????????
     type: com.zaxxer.hikari.HikariDataSource          # ??????HikariCP
-    driver-class-name: com.mysql.jdbc.Driver          # mysql??
+    driver-class-name: com.mysql.cj.jdbc.Driver          # mysql??
     url: jdbc:mysql://192.168.133.129:3306/foodie-shop-dev?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true
     username: root
     password: 123456
